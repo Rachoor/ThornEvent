@@ -1,0 +1,70 @@
+<div class="p-2">
+
+    <div class="row mb-5 mt-2">
+        <div class=" col-md-10">
+            <h1> My Events </h1>
+        </div>
+        <div class=" col-md-2 "> 
+          <button mat-raised-button color="primary" (click)="createEvent()">Create Event</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let event of events; let i = index;">
+            <div class="card shadow mb-3 ml-2 mr-2">
+                <a href="javascript:void(0)" (click)="View(event.id)"><img class="card-img-top img-fluid"
+                        src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2016/12/16131147/future-phone-mobile-live-events-technology-trends.png"
+                        alt="Card image cap"></a>
+                <div class="card-body">
+                    <p class="card-text">
+                        <span class="badge badge-secondary">{{event.startdate__c|date}}</span>
+                        <span class="badge badge-warning" style="float:right;"> {{event.status__c}} </span>
+                    </p>
+                    <h5 class="card-title"><a href="javascript:void(0)" (click)="View(event.id)" style="color:black;">{{event.title__c}} </a></h5>
+                    <p calss="card-text">{{description}}</p>
+                </div>
+                <div class="card-footer">
+                  <button mat-raised-button color="secondary" (click)="editEvent(i)" class ="m-2">Edit </button>
+                  <button  mat-raised-button color="warn" (click)="deleteEvent(event.id)" class = "m-2"> Delete</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+<!-- <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Create Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <app-event-create uid = {{userid}}></app-event-create>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="editEventModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Edit Event</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <app-event-edit></app-event-edit>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  

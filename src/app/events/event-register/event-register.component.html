@@ -1,0 +1,31 @@
+<div class = "container">
+        <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+          <div class="form-group">
+            <label for="session"> Session </label>
+          <select id="session" name="session__c" class="form-control" ngModel required>
+              <option [value]="sess.id" *ngFor="let sess of sessions"> {{sess.title__c}} </option>
+          </select> 
+          </div>
+            <div class="form-group">
+              <label for="firstName"> First Name </label>
+            <input type="text" id="firstName" name="firstName__c" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="lastName"> Last Name </label>
+            <input type="text" id="lastName" name="lastName__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="email"> Email  </label>
+                <input type="email" id="email" name="email__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="phone"> Phone Number </label>
+                <input type="text" id="phone" name="phone__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="company"> Company </label>
+                <input type="text" id="company" name="company__c" class="form-control" required ngModel>
+              </div>
+              <button mat-raised-button color="primary" type="submit">Submit</button>
+          </form>
+          </div>

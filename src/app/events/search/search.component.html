@@ -1,0 +1,15 @@
+<div class = "row  topbody align-items-center" style="vertical-align:middle">
+        <div class = "col-md-2"></div>
+        <div class = "col-md-8 ">
+            <div class="form-group ">
+                <input class="form-control input-lg align-middle" id="inputlg" type="text" 
+                placeholder = "Search Event" 
+                name = "searchTerm" 
+                [(ngModel)] = "searchTerm" 
+                (keydown.enter)="searchEvent()">
+              </div>    
+            </div>
+            <div class = "col-md-2">
+                <button mat-raised-button color="primary" (click)="searchEvent()">Search</button>
+            </div>
+    </div>

@@ -1,0 +1,157 @@
+<div class="container" *ngIf='this.type === "event"'>
+
+    <h3> {{data.name}} {{data.event?.title__c}}</h3>
+  <form #eventForm="ngForm" (ngSubmit)="onEventSubmit(eventForm)">
+
+      <div class="form-group">
+          <label for="event_name"> Event Name </label>
+          <input type="text" id="event_name" name="title__c" class="form-control" [(ngModel)] = "cevent.title__c" required>
+      </div>
+
+      <div class="form-group">
+          <label for="event_category"> Category </label>
+          <select id="event_category" name="category__c" class="form-control" [(ngModel)]= "cevent.category__r.Id" required>
+              <option [value]="category.id" *ngFor="let category of data.categories"> {{category?.name__c}} </option>
+          </select> 
+      </div>
+
+      <div class="form-group">
+          <label for="event_name"> Image URL </label>
+          <input type="text" id="event_name" name="imageurl__c" class="form-control" [(ngModel)] = "cevent.imageurl__c">
+      </div>
+
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="event_startDate"> Start Date </label>
+              <input type="date" id="event_startDate" name="startDate__c" class="form-control" [(ngModel)] = "cevent.startdate__c">
+          </div>
+          <div class="form-group col-md-6">
+              <label for="event_startTime"> Start Time </label>
+              <input type="text" id="event_startTime" name="startTime__c" class="form-control" ngModel placeholder = "HH:MM:SS" [(ngModel)] = "cevent.starttime__c">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="event_endDate"> End Date </label>
+              <input type="date" id="event_endDate" name="endDate__c" class="form-control" [(ngModel)] = "cevent.enddate__c" >
+          </div>
+          <div class="form-group col-md-6">
+              <label for="event_startTime"> End Time </label>
+          <input type="text" id="event_endTime" name="endTime__c" class="form-control" [(ngModel)] = "cevent.endtime__c" placeholder = "HH:MM:SS">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="event_registrationlimnit"> Registration Limit </label>
+          <input type="number" min = "0" id="event_registratinlimit" name="registrationLimit__c" class="form-control" [(ngModel)] = "cevent.registrationlimit__c">
+      </div>
+
+      <div class="form-group">
+          <label for="event_registrationlimnit"> Description </label>
+          <textarea id="event_description" name="description__c" class="form-control"[(ngModel)] = "cevent.description__c"></textarea>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+              <input  class = "btn btn-primary form-control" value="submit" type = "submit" [disabled]="submitDisabled"> 
+          </div>
+      </div>
+
+
+  </form>
+</div>
+
+<div class="container" *ngIf='this.type === "session"'>
+
+  <h3> {{data.name}} {{data.session?.title__c}}</h3>
+<form #sessionForm="ngForm" (ngSubmit)="onSessionSubmit(sessionForm)">
+
+    <div class="form-group">
+        <label for="session_name"> Session Name </label>
+        <input type="text" id="session_name" name="title__c" class="form-control" [(ngModel)] = "csession.title__c" required>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="session_startDate"> Start Date </label>
+            <input type="date" id="session_startDate" name="startDate__c" class="form-control" [(ngModel)] = "csession.startdate__c">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="session_startTime"> Start Time </label>
+            <input type="text" id="session_startTime" name="startTime__c" class="form-control" ngModel placeholder = "HH:MM:SS" [(ngModel)] = "csession.starttime__c">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="session_endDate"> End Date </label>
+            <input type="date" id="session_endDate" name="endDate__c" class="form-control" [(ngModel)] = "csession.enddate__c" >
+        </div>
+        <div class="form-group col-md-6">
+            <label for="session_endTime"> End Time </label>
+        <input type="text" id="session_endTime" name="endTime__c" class="form-control" [(ngModel)] = "csession.endtime__c" placeholder = "HH:MM:SS">
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="data.function !== 'create'">
+        <label for="session_status"> Status </label>
+        <select id="session_status" name="status__c" class="form-control" [(ngModel)]= "csession.status__c" required>
+            <option [value]="status" *ngFor="let status of statuses"> {{status}} </option>
+        </select> 
+    </div>
+
+      <div class="form-group">
+        <label for="session_registrationlimnit"> Registration Limit </label>
+        <input type="number" min = "0" id="session_registratinlimit" name="registrationLimit__c" class="form-control" [(ngModel)] = "csession.registrationlimit__c">
+    </div>
+
+    <div class="form-group">
+        <label for="event_description"> Description </label>
+        <textarea id="event_description" name="description__c" class="form-control"[(ngModel)] = "csession.description__c"></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input  class = "btn btn-primary form-control" value="submit" type = "submit" [disabled]="submitDisabled"> 
+        </div>
+    </div>
+
+
+</form>
+</div>
+
+<div class="container" *ngIf='this.type === "register"'>
+    <h3> {{data.name}} </h3>
+    <div class = "container">
+        <form #eventForm="ngForm" (ngSubmit)="onRegisterSubmit(eventForm)">
+          <div class="form-group">
+            <label for="session"> Session </label>
+          <select id="session" name="session__c" class="form-control" ngModel required>
+              <option [value]="sess.id" *ngFor="let sess of rsessions"> {{sess.title__c}} </option>
+          </select> 
+          </div>
+            <div class="form-group">
+              <label for="firstName"> First Name </label>
+            <input type="text" id="firstName" name="firstName__c" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="lastName"> Last Name </label>
+            <input type="text" id="lastName" name="lastName__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="email"> Email  </label>
+                <input type="email" id="email" name="email__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="phone"> Phone Number </label>
+                <input type="text" id="phone" name="phone__c" class="form-control" required ngModel>
+              </div>
+              <div class="form-group">
+                <label for="company"> Company </label>
+                <input type="text" id="company" name="company__c" class="form-control" required ngModel>
+              </div>
+              <button mat-raised-button color="primary" type="submit">Submit</button>
+          </form>
+          </div>
+</div>

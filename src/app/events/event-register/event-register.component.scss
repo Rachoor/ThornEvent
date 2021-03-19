@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+.mat-form-field-label  {
+  color: black !important;
+}
+.mat-form-field-underline {
+  background-color: black !important;;
+}
+.mat-form-field-ripple {
+  background-color: black !important;
+}
+mat-list-option[aria-selected="true"] {
+  background: rgba(0, 139, 139, 0.7);
+}

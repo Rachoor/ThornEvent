@@ -1,0 +1,25 @@
+.topbody {
+    height:10em;
+    background-image:linear-gradient(
+        to right bottom,
+        rgba(170, 94, 214, 0.8),
+         rgba(17, 61, 182, 0.8)) ,   
+  }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .mat-tab-label{
+    color:black;
+    background-color: transparent;
+    text-transform: capitalize;
+  }
+
+  .mat-tab-label.mat-tab-label-active {
+    color: black;
+    background-color: transparent;
+    font-size:20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}

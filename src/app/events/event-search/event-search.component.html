@@ -1,0 +1,29 @@
+<app-search [term]='searchTerm' (updateValue)="searchEvents($event)"></app-search>
+
+<div class = "container mt-5">
+    <div clas = "row " *ngFor="let event of events; let i = index">
+        <div class = "col-md-12 m-3">
+            <a [routerLink]="['/events', event.id]">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img class="card-img" [src]="event.imageurl__c" alt="">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <div class="card-title">
+                            <span >{{event.title__c}}</span>
+                            <span class="badge badge-dark" style = "float:right;">{{event.startdate__c|date}}</span>
+                            </div>
+                            <p class="card-text">{{event.description__c | slice:0:150}}...</p>
+                            <span class="badge badge-warning"> Seats Left: {{event.seatsremaining__c}} </span>
+                            <span class="badge badge-light" style = "float:right;">{{event.status__c}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+</div>
+

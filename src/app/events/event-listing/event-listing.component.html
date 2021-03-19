@@ -1,0 +1,65 @@
+
+<div class = "m-2 p-2">
+
+   
+<app-search [term]='searchTerm' (updateValue)="searchEvents($event)"></app-search>
+   
+    
+    <div class = "row"><div class = "col-md-12">
+
+        <mat-tab-group mat-align-tabs = "center" [selectedIndex]="activeTab" (selectedIndexChange)="tabChanged($event)">
+            <mat-tab *ngFor="let tab of categories; let i = index" label="{{tab}}">
+                
+                <div class = "row">
+                    <div class = "col-md-4 p-2" *ngFor="let event of categoryEvents|slice:0:3; let i = index">
+                            <app-event-card name = {{event.title__c}} startDate = {{event.startdate__c|date}} eventId = {{event.id}} remainingSeats = {{event.seatsremaining__c}} description = {{event.description__c}} imageUrl = {{event.imageurl__c}} status = {{event.status__c}}></app-event-card>
+                    </div>          
+                </div>
+                <div class = "row">
+                    <div class = "col-md-4 p-2" *ngFor="let event of categoryEvents|slice:3:6; let i = index">
+                            <app-event-card name = {{event.title__c}} startDate = {{event.startdate__c|date}} eventId ={{event.id}} remainingSeats = {{event.seatsremaining__c}} description = {{event.description__c}} imageUrl = {{event.imageurl__c}} status = {{event.status__c}}></app-event-card>
+                    </div>          
+                </div>
+
+            </mat-tab>
+ 
+      </mat-tab-group>
+
+<div class = "row align-items-center" style = "background-color:rgb(241, 241, 241)">
+    <div class = "col-md-6">
+        <img class = "img-fluid" src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.standard.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2018%2F07%2F13%2F17%2Foutdoorcinema.jpg&f=1&nofb=1">
+    </div>
+    <div class = "col-md-6" >
+        <h2> Create a beautiful event listing using our tools</h2>
+        <p style = "font-size: 21px"> Organizing an event just became lot easier with EventThorn. At a click of  button you can be able to create 
+            an event with options for users to register and able to take payments from users </p>
+        <button mat-raised-button color="warn" (click)="createEvent()">Create an Event</button>
+
+    </div>
+</div>
+
+<br>
+
+
+    <h2 class = "p-2"> Popular Events </h2>
+<div class = "row m-4">
+    <div *ngFor="let pop of popularEvents|slice:0:4" class = "col-md-3 p-2">
+            <app-event-card name = {{pop.title__c}} startDate = {{pop.startdate__c|date}} remainingSeats = {{pop.seatsremaining__c}} eventId ={{pop.id}} description = {{pop.description__c}} imageUrl = {{pop.imageurl__c}} status = {{pop.status__c}}></app-event-card>
+    </div>
+   
+</div>
+
+
+<br>
+
+<h2 class = "p-2"> Upcoming Events </h2>
+<div class = "row m-4">
+    <div *ngFor="let lat of latestEvents|slice:0:4; let i = index" class = "col-md-3 p-2">
+            <app-event-card name = {{lat.title__c}} startDate = {{lat.startdate__c|date}} eventId ={{lat.id}} remainingSeats = {{lat.seatsremaining__c}} description = {{lat.description__c}} imageUrl = {{lat.imageurl__c}} status = {{lat.status__c}}></app-event-card>
+    </div>
+
+<br>
+
+
+</div>
+

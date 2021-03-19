@@ -1,0 +1,29 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .mat-tab-label{
+    color:black;
+    background-color: transparent;
+    text-transform: capitalize;
+  }
+
+  .mat-tab-label.mat-tab-label-active {
+    color: black;
+    background-color: transparent;
+    font-size:20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.cbut{
+    font-size: 25px;
+}
+
+.tdat{
+    font-size: 20px;
+}
+
+thead{
+    font-size: 20px;
+}

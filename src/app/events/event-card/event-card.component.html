@@ -1,0 +1,15 @@
+<div class="card shadow" style = "max-width:500px;">
+    <a [routerLink]="['/events', eventId]"><img class="card-img-top img-fluid" [src]="imageUrl" alt="" ></a>
+    <div class="card-body">
+        <p class="card-text"> 
+            <span class="badge badge-dark">{{startDate}}</span>
+            <span class="badge badge-light" style = "float:right;">{{status}}</span>
+        </p>
+      <div class="card-title">
+      <a [routerLink]="['/events', eventId]" style = "color:black;">{{name}} </a>             
+        </div>
+      <p calss = "card-text">{{description | slice:0:150}}...</p>
+      <span class="badge badge-warning" style = "float:right;"> Seats Left: {{remainingSeats}} </span>
+    </div>
+  </div>
+  
